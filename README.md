@@ -91,3 +91,29 @@ Internet Protocol Version 6, Src: fd00:1122:3344::3, Dst: fd00:1122:3344::2
 Internet Control Message Protocol v6
     Type: Echo (ping) request (128)
 ```
+
+### Сравнительная таблица заголовков
+| Поле | IPv4 (из захвата) | IPv6 (из захвата) | Комментарий |
+| ---- | ------------------| ----------------- | ----------- |
+| Version | 4 | 6 | Идентификатор протокола |
+| Header Length | 20 bytes (IHL=5) | 40 bytes (фиксировано) | 	
+IPv6 не имеет поля IHL |
+| Length Field | Total Length: 84 | Payload Length: 64 | IPv6 учитывает только полезную нагрузку |
+| TTL / Hop Limit | 	
+TTL: 64 | Hop Limit: 64 | Аналогичная семантика, разное название |
+| Protocol / Next Header | 	
+ICMP (1) | ICMPv6 (58) | В IPv6 указывает на следующий заголовок или протокол |
+| Header Checksum | 	
+0xb24e | Отсутствует | В IPv6 проверка перенесена на уровни TCP/UDP |
+| ICMP Type | 	
+8 (Echo Request) | 	
+128 (Echo Request) | Разные пространства кодов |
+| Source Address | 10.99.0.3 (32 bit) | fd00:1122:3344::3 (128 bit) | ULA-адрес, аналог 192.168.0.0/16 |
+
+### Быстрый запуск
+```
+git clone 
+cd lab9
+chmod +x analize.sh
+./analize.sh
+```
