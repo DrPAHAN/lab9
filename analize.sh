@@ -1,5 +1,3 @@
-#!/bin/bash
-
 echo "=== IPv4 Header ==="
 (
   printf "Version\tLength\tTTL\tProtocol\tChecksum\tSource Address\n"
